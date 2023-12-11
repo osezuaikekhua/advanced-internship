@@ -1,20 +1,24 @@
 import React from 'react'
+import { useState } from 'react'
 import Nav from '../componets/home/Nav'
 import Landing from '../componets/home/Landing'
 import Features from '../componets/home/Features'
 import Reviews from '../componets/home/Reviews'
 import Numbers from '../componets/home/Numbers'
+import Modual from '../componets/Modules/Modual'
 
 import logo from '../images/logo.png'
 import landing from '../images/landing.png'
 
-function Home() {
+function Home({showModule}) {
+
+
   return (
     <>
-    <Nav LogoImg = {logo} />
-    <Landing LandingImg = {landing} />
+    <Nav LogoImg = {logo} showModule={showModule} />
+    <Landing LandingImg = {landing} showModule = {showModule} />
     <Features />
-    <Reviews />
+    <Reviews showModule = {showModule} />
     <Numbers />
     
     <section id="footer">
@@ -22,7 +26,7 @@ function Home() {
         <div class="row">
           <div class="footer__top--wrapper">
             <div class="footer__block">
-              <div class="footer__link--title">Actions</div>
+              <div class="footer__link--title">Action</div>
               <div>
                 <div class="footer__link--wrapper">
                   <a class="footer__link">Summarist Magazine</a>

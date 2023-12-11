@@ -1,7 +1,8 @@
 import React from 'react'
 
 
-function Nav({LogoImg}) {
+
+function Nav({LogoImg, showModule}) {
   return (
     <>
         <nav class="nav">
@@ -10,7 +11,7 @@ function Nav({LogoImg}) {
           <img class="nav__img" src={LogoImg} alt="logo" />
         </figure>
         <ul class="nav__list--wrapper">
-          <li class="nav__list nav__list--login">Login</li>
+          <li class="nav__list nav__list--login" onClick={showModule}>Login</li>
           <li class="nav__list nav__list--mobile">About</li>
           <li class="nav__list nav__list--mobile">Contact</li>
           <li class="nav__list nav__list--mobile">Help</li>

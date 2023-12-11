@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Landing({LandingImg}) {
+function Landing({LandingImg, showModule}) {
   return (
     <>
         <section id="landing">
@@ -19,7 +19,7 @@ function Landing({LandingImg}) {
                     <br class="remove--tablet" />
                     and even people who don’t like to read.
                 </div>
-                <button class="btn home__cta--btn">Login</button>
+                <button class="btn home__cta--btn" onClick={showModule}>Login</button>
                 </div>
                 <figure class="landing__image--mask">
                 <img src={LandingImg} alt="landing" />

@@ -536,6 +536,137 @@ button:disabled {
   }
 }
 
+/*Login Module*/
+
+.module__background{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.617);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.module__container{
+  width: 350px;
+  max-width: 100%;
+  background-color: white;
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.module__close{
+  display: flex;
+  justify-content: end;
+  padding: 10px;
+}
+
+.module__close h1{
+  cursor: pointer;
+}
+
+.module__input{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.module__input h2{
+  margin-bottom: 25px;
+  font-size: 25px;
+}
+
+.module__input input{
+  width: 100%;
+  padding: 15px;
+  font-size: 17px;
+  outline: none;
+  margin-bottom: 25px;
+}
+
+.signUp__link{
+  width: 100%;
+  background-color: rgba(178, 178, 178, 0.152);
+  text-align: center;
+  padding: 15px;
+  border-radius: 0 0 10px 10px;
+  color: #0564f1;
+  font-size: 15px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.signUp__link:hover{
+  background-color: rgba(178, 178, 178, 0.453);
+}
+
+.forget__password{
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  margin-top: 25px;
+  border-radius: 0 0 10px 10px;
+  color: #0564f1;
+  font-size: 15px;
+  font-weight: 300;
+  cursor: pointer;
+}
+.forget__password:hover{
+  color: #001c46;
+}
+
+.module__login__guest{
+  position: relative;
+  background-color: #485cc0;
+  color: white;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 200ms;
+  min-width: 180px;
+  margin-bottom: 25px;
+}
+
+.guest-icon{
+  position: absolute;
+  left: 5px;
+  top: 10%;
+  font-size: 30px;
+}
+
+.google-icon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 5px;
+  top: 10%;
+  font-size: 30px;
+  background-color: white;
+}
+
+.module__login__google{
+  position: relative;
+  background-color: rgb(100, 116, 255);
+  color: white;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  font-size: 16px;
+  transition: background-color 200ms;
+  min-width: 180px;
+  margin-bottom: 25px;
+}
+
+/*sign up*/
+
+
+
+
 @media (max-width: 576px) {
   .nav__list--mobile {
     display: none;

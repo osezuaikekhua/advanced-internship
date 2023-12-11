@@ -1,7 +1,7 @@
 import React from 'react'
 import { BsStarFill } from "react-icons/bs";
 
-function Reviews() {
+function Reviews({showModule}) {
   return (
     <>
         <section id="reviews">
@@ -65,7 +65,7 @@ function Reviews() {
                 </div>
             </div>
             <div class="reviews__btn--wrapper">
-                <button class="btn home__cta--btn">Login</button>
+                <button class="btn home__cta--btn" onClick={showModule} >Login</button>
             </div>
             </div>
         </div>
