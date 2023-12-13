@@ -1,11 +1,31 @@
 import React, { useState } from 'react'
 
+
 import { GiCharacter } from "react-icons/gi";
 import { FcGoogle } from "react-icons/fc";
 
+import { Link } from 'react-router-dom';
 
-function LogIn({showSignIn, resetPass, signUp}) {
 
+function LogIn({showSignIn, resetPass }) {
+
+  const [link, setLink] = useState(" ")
+
+
+  function signUp(){
+    let requiredEmail = "1234"
+    let requiredPassword = "abcd"
+
+    let emailInput = document.querySelector("#signUp__email")
+    let passwordInput = document.querySelector("#signUp__password")
+
+    if(emailInput.value === requiredEmail && passwordInput.value === requiredPassword){
+        console.log("correct password")
+        setLink("for-you")
+    }else{
+      console.log("Incorrect information")
+    }
+  }
 
 
 
@@ -18,8 +38,8 @@ function LogIn({showSignIn, resetPass, signUp}) {
             <button className='module__login__google'> <div className='google-icon'><FcGoogle /></div> Login with Google</button>
             <input id='signUp__email' type="text" placeholder='Email Address' />
             <input id='signUp__password' type="text" placeholder='Password'/>
-
-            <button className='btn' onClick={signUp}>Login</button>
+            
+            <Link to={`/${link}`}><button className='btn' onClick={signUp}>  Login </button></Link> 
         </div>
         
           <div className='forget__password' onClick={resetPass}>Forgot your password?</div>

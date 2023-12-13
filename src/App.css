@@ -662,7 +662,49 @@ button:disabled {
   margin-bottom: 25px;
 }
 
-/*sign up*/
+/* FOR YOU PAGE */
+
+.forYou__container{
+  display: flex;
+}
+
+.forYou__container nav{
+  height: 100vh;
+  width: 250px;
+  background-color: rgb(240, 240, 240);
+  color: #021b28;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav__section{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  height: 100%;
+}
+
+.nav__section__text div{
+  margin: 20px 0;
+  font-size: 19px;
+}
+
+.forYou__container section{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.search__container{
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px black solid;
+}
+
+
 
 
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+
 import Nav from '../componets/home/Nav'
 import Landing from '../componets/home/Landing'
 import Features from '../componets/home/Features'
@@ -11,10 +13,18 @@ import logo from '../images/logo.png'
 import landing from '../images/landing.png'
 
 function Home({showModule}) {
-
+  const [showModal, setShowModal] = useState(false)
+  function showModule(){
+    if(!showModal){
+      setShowModal(true)
+    }else if(showModal){
+      setShowModal(false)
+    }
+  }
 
   return (
     <>
+    { showModal && <Modual showModule={showModule} /> } 
     <Nav LogoImg = {logo} showModule={showModule} />
     <Landing LandingImg = {landing} showModule = {showModule} />
     <Features />
