@@ -34,7 +34,7 @@ function LogIn({showSignIn, resetPass }) {
     <>
         <div className='module__input'>
             <h2>Log in to Summarist</h2>
-            <button className='module__login__guest'> <div className='guest-icon'><GiCharacter /></div> Login as a Guest</button>
+           <button className='module__login__guest'> <Link to={"/for-you"}> <div className='guest-icon'><GiCharacter /></div> Login as a Guest</Link></button>            
             <button className='module__login__google'> <div className='google-icon'><FcGoogle /></div> Login with Google</button>
             <input id='signUp__email' type="text" placeholder='Email Address' />
             <input id='signUp__password' type="text" placeholder='Password'/>
