@@ -671,6 +671,7 @@ button:disabled {
 .Container nav{
   position: sticky;
   left: 0;
+  top: 0;
 
   height: 100vh;
   width: 250px;
@@ -788,7 +789,8 @@ button:disabled {
 
 .Selected__Book__Section{
   background-color: #ffecd498;
-  width: 70%;
+  max-width: 700px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   padding: 30px;
@@ -833,6 +835,64 @@ button:disabled {
 .Selected__Book__Info h3{
   font-size: 13px;
 }
+
+/* Book Componet */
+
+.Recommended__Books__Section{
+  margin-bottom: 50px;
+}
+
+.Recommended__Books{
+  display: flex;
+overflow: hidden;
+}
+
+.Recommended__Books__Section h2{
+  margin-bottom: 15px;
+}
+.Recommended__Books__Section p{
+  margin-bottom: 30px;
+}
+
+
+.Book{
+  width: 200px;
+  padding: 20px 0;
+  margin-right: 30px;
+}
+
+.Book:hover{
+  background-color:  #052e451f;
+}
+
+.Book__image{
+  width: 200px;
+  height: 200px;
+}
+
+.Book__Title{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.Book__authorName{
+  font-weight: 300;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.Book__Description{
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+
+.Book footer{
+  display: flex;
+}
+.Book__Length{
+  margin-right: 10px ;
+}
+
+
 
 @media (max-width: 576px) {
   .nav__list--mobile {
