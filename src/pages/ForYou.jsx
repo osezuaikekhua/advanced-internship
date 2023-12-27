@@ -16,7 +16,7 @@ function ForYou() {
   
   const [showForYou, setshowForYou] = useState(true)
   const [showLibrary, setshowLibrary] = useState(false)
-  const [showActiveForYou, setshowActive] = useState("")
+  const [showActiveForYou, setshowActive] = useState("rgba(0, 205, 21, 0.661)")
   const [showActiveLibrary, setshowActiveLibrary] = useState("")
 
   function ShowForYou(){
@@ -42,7 +42,7 @@ function ForYou() {
 
   return (
     <>
-      <div className='forYou__container'>
+      <div className='Container'>
 
         <nav>
           <div className='nav__title'>Summarist</div>
@@ -74,6 +74,7 @@ function ForYou() {
 
         <section>
           <div className='search__container'>
+            <div></div>
             <div className='search__bar'>
               <input type="text" placeholder='Search for books'/>
               <button ><RxMagnifyingGlass /></button>            

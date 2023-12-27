@@ -664,11 +664,14 @@ button:disabled {
 
 /* FOR YOU PAGE */
 
-.forYou__container{
+.Container{
   display: flex;
 }
 
-.forYou__container nav{
+.Container nav{
+  position: sticky;
+  left: 0;
+
   height: 100vh;
   width: 250px;
   background-color: rgb(240, 240, 240);
@@ -708,25 +711,25 @@ button:disabled {
 
 .for-you-active{
   height: 100%;
-  width: 5%;
+  width: 3%;
   margin-right: 15px;
 }
 
 .library-active{
   height: 100%;
-  width: 5%;
+  width: 3%;
   margin-right: 15px;
 }
 
 .active-state{
   height: 100%;
-  width: 5%;
+  width: 3%;
   margin-right: 15px;
 }
 
-/* Right Side*/
+/* End of navigation*/
 
-.forYou__container section{
+.Container section{
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -738,7 +741,7 @@ button:disabled {
   height: 80px;
   border-bottom: 1px black solid;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 
 }
@@ -775,8 +778,61 @@ button:disabled {
 }
 
 
+/* For You Section */
 
+.ForYou__Container{
+  width: 100%;
+  padding: 50px 20%;
+  color: #052e45;
+}
 
+.Selected__Book__Section{
+  background-color: #ffecd498;
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px;
+  margin: 20px 0;
+}
+
+.Selected__Book__Section p{
+  width: 40%;
+}
+
+.line{
+  width: 1px;
+  background-color: black;
+  margin: 0 50px;
+}
+
+.Selected__Book__area{
+  display: flex;
+  justify-content: space-evenly;
+  width: 80%;
+}
+
+.Selected__Book{
+  width: 150px;
+  height: 150px;
+}
+
+.Selected__Book__Info h1{
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+.Selected__Book__Info h2{
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+.Selected__Book__Info div{
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+}
+.Selected__Book__Info h3{
+  font-size: 13px;
+}
 
 @media (max-width: 576px) {
   .nav__list--mobile {
