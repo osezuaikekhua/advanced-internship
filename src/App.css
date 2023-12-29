@@ -690,7 +690,13 @@ button:disabled {
   height: 100%;
 }
 
+.nav__logo {
+  padding: 20px 10px;
+}
 
+.nav__logo img{
+  width: 100%;
+}
 
 .nav__section__text div{
   height: 60px;
@@ -726,6 +732,13 @@ button:disabled {
   height: 100%;
   width: 3%;
   margin-right: 15px;
+}
+
+.inactive-state{
+  height: 100%;
+  width: 3%;
+  margin-right: 15px;
+
 }
 
 /* End of navigation*/

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Library from '../componets/for-you/Library';
 import ForYouPage from '../componets/for-you/ForYouPage';
-
+import logo from '../images/logo.png'
 
 
 import { RxMagnifyingGlass } from "react-icons/rx";
@@ -19,6 +19,8 @@ function ForYou() {
   const [showActiveForYou, setshowActive] = useState("rgba(0, 205, 21, 0.661)")
   const [showActiveLibrary, setshowActiveLibrary] = useState("")
 
+
+  /* Trying giving it a class name with that green selected style instead */
   function ShowForYou(){
     if(!showForYou){
       setshowForYou(true)
@@ -45,7 +47,7 @@ function ForYou() {
       <div className='Container'>
 
         <nav>
-          <div className='nav__title'>Summarist</div>
+          <div className='nav__logo'><img src={logo} alt="" /></div>
           <div className='nav__section'>
             <div className='nav__section__text'>
 
@@ -61,12 +63,12 @@ function ForYou() {
                   <p>My Library</p>
                 </div>
 
-                <div><div className='active-state'></div><i><FaPenClip /></i> <p>Highlights</p></div>
-                <div><div className='active-state'></div><i><RxMagnifyingGlass /></i> <p>Search</p></div>
+                <div><div className='inactive-state'></div><i><FaPenClip /></i> <p>Highlights</p></div>
+                <div><div className='inactive-state'></div><i><RxMagnifyingGlass /></i> <p>Search</p></div>
             </div>
             <div className='nav__section__text'>
                 <div><div className='active-state'></div><i><GoGear /></i> <p>Settings</p></div>
-                <div><div className='active-state'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
+                <div><div className='inactive-state'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
                 <div><div className='active-state'></div><i><BsArrowBarRight /></i> <p>Logout</p></div>
             </div>
           </div>
@@ -83,7 +85,7 @@ function ForYou() {
           </div>
           
           <div className='content__container'>
-            {showForYou && <ForYouPage/>}
+            {showForYou && <ForYouPage />}
             {showLibrary && <Library/>}
           </div>
         </section>

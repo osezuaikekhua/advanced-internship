@@ -3,6 +3,9 @@ import axios from 'axios'
 import { IoMdPlayCircle } from "react-icons/io";
 import { CiClock2 } from "react-icons/ci";
 import { IoIosStarOutline } from "react-icons/io";
+import { Link } from 'react-router-dom'
+import Book from './Book';
+
 
 function ForYouPage() {
     const[selectedBooks, setSelectedBooks] = useState([])
@@ -12,7 +15,7 @@ function ForYouPage() {
     async function getBooks(constVal, api){
       const { data } = await axios.get(api)
       constVal(data)
-      console.log(suggestedBooks)
+      
     }
 
     useEffect(() => {
@@ -20,7 +23,7 @@ function ForYouPage() {
       getBooks(setrecommendedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
       getBooks(setSuggestedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested")
     },[])
-
+    console.log(suggestedBooks)
   return (
     <> 
       <div className='ForYou__Container'>
@@ -30,7 +33,7 @@ function ForYouPage() {
             
             {
               selectedBooks.map(book => (
-                <div className='Selected__Book__Section' >
+                <div className='Selected__Book__Section' key={book.id} >
                   <p>{book.subTitle}</p>
                   <div className='line'></div>
                   <div className='Selected__Book__area'>
@@ -52,16 +55,15 @@ function ForYouPage() {
             <div className="Recommended__Books">
                 {
                   recommendedBooks.slice(0,4).map(book => (
-                    <div className="Book">
-                      <img className='Book__image' src={book.imageLink} alt=""/>
-                      <div className="Book__Title">{book.title}</div>
-                      <div className="Book__authorName">{book.author}</div>
-                      <div className="Book__Description">{book.subTitle}</div>
-                      <footer>
-                        <div className="Book__Length"> <CiClock2 /> 03:24</div>
-                        <div className="Book__Rating"> <IoIosStarOutline /> {book.averageRating}</div>
-                      </footer>
-                    </div>
+                    <Link to={`/book/${book.id}`} >
+                    <Book key={book.id}
+                          imageLink={book.imageLink} 
+                          title={book.title} 
+                          author={book.author} 
+                          subTitle={book.subTitle} 
+                          averageRating = {book.averageRating}
+                    />
+                    </Link>
                 ))}
                 
                 
@@ -76,16 +78,15 @@ function ForYouPage() {
             <div className="Recommended__Books">
                 {
                   suggestedBooks.slice(0,4).map(book => (
-                    <div className="Book">
-                      <img className='Book__image' src={book.imageLink} alt=""/>
-                      <div className="Book__Title">{book.title}</div>
-                      <div className="Book__authorName">{book.author}</div>
-                      <div className="Book__Description">{book.subTitle}</div>
-                      <footer>
-                        <div className="Book__Length"> <CiClock2 /> 03:24</div>
-                        <div className="Book__Rating"> <IoIosStarOutline /> {book.averageRating}</div>
-                      </footer>
-                    </div>
+                    <Link to={`/book/${book.id}`}  >
+                    <Book key={book.id}
+                          imageLink={book.imageLink} 
+                          title={book.title} 
+                          author={book.author} 
+                          subTitle={book.subTitle} 
+                          averageRating = {book.averageRating}
+                    />
+                    </Link>
                 ))}
               </div>
         </section>
