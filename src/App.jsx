@@ -8,8 +8,6 @@ import ForYou from './pages/ForYou';
 
 function App() {
   
-
-
   return (
     <>
       
