@@ -4,42 +4,53 @@ import React, { useState } from 'react'
 import { GiCharacter } from "react-icons/gi";
 import { FcGoogle } from "react-icons/fc";
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+
+import { database } from '../FireBaseConfig';
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
 
 
 function LogIn({showSignIn, resetPass }) {
 
-  const [link, setLink] = useState(" ")
 
+  const[error, setError] = useState("")
 
-  function signUp(){
-    let requiredEmail = "1234"
-    let requiredPassword = "abcd"
+  const history = useNavigate()
 
-    let emailInput = document.querySelector("#signUp__email")
-    let passwordInput = document.querySelector("#signUp__password")
+  const handleSubmit =(e,type)=>{
+    e.preventDefault()
+    const email = e.target.email.value
+    const password = e.target.password.value
+   
+    
+    signInWithEmailAndPassword(database,email,password).then(data => {
+      console.log(data,"authData")
+      history('/for-you')
+    }).catch(err =>{
 
-    if(emailInput.value === requiredEmail && passwordInput.value === requiredPassword){
-        console.log("correct password")
-        setLink("for-you")
-    }else{
-      console.log("Incorrect information")
-    }
+      setError(`Error: ${err.code}`)
+      setTimeout(() => {  
+        setError(" ")
+      }, 4000);
+      
+    })
   }
-
-
 
 
   return (
     <>
         <div className='module__input'>
             <h2>Log in to Summarist</h2>
+            <h4 style={{color: '#c71111', fontWeight:'400'}}>{error}</h4>
+            <br />
            <button className='module__login__guest'> <Link to={"/for-you"}> <div className='guest-icon'><GiCharacter /></div> Login as a Guest</Link></button>            
             <button className='module__login__google'> <div className='google-icon'><FcGoogle /></div> Login with Google</button>
-            <input id='signUp__email' type="text" placeholder='Email Address' />
-            <input id='signUp__password' type="text" placeholder='Password'/>
-            
-            <Link to={`/${link}`}><button className='btn' onClick={signUp}>  Login </button></Link> 
+            <form onSubmit={(e)=>handleSubmit(e)}>
+              <input type="text" placeholder='Email Address' name='email' />
+              <input type="text" placeholder='Password' name='password'/>
+              
+            <button className='btn' >  Login </button>
+           </form>
         </div>
         
           <div className='forget__password' onClick={resetPass}>Forgot your password?</div>
