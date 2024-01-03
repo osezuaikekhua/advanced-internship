@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 import { RxMagnifyingGlass } from "react-icons/rx";
@@ -10,7 +11,32 @@ import { GoGear } from "react-icons/go";
 import { GoQuestion } from "react-icons/go";
 import { BsArrowBarRight } from "react-icons/bs";
 
-function Nav({ShowForYou, ShowLibrary, showActiveLibrary, showActiveForYou, logo}) {
+function Nav({logo}) {
+  
+  const [showForYou, setshowForYou] = useState(true)
+  const [showLibrary, setshowLibrary] = useState(false)
+  const [showActiveForYou, setshowActive] = useState("rgba(0, 205, 21, 0.661)")
+  const [showActiveLibrary, setshowActiveLibrary] = useState("")
+
+  function ShowForYou(){
+    if(!showForYou){
+      setshowForYou(true)
+      setshowActive("rgba(0, 205, 21, 0.661)")
+
+      setshowActiveLibrary(" ")
+      setshowLibrary(false)
+    }
+  }
+
+  function ShowLibrary(){
+    if(!showLibrary){
+      setshowLibrary(true)
+      setshowActiveLibrary("rgba(0, 205, 21, 0.661)")
+
+      setshowActive(" ")
+      setshowForYou(false)
+    }
+  }
 
 
   return (
@@ -19,18 +45,21 @@ function Nav({ShowForYou, ShowLibrary, showActiveLibrary, showActiveForYou, logo
     <div className='nav__section'>
       <div className='nav__section__text'>
 
-          <div onClick={ShowForYou} >
+          <Link to={"/for-you"}>
+          <div onClick={ShowForYou}>
             <div className='for-you-active' style={{ backgroundColor: `${showActiveForYou}` }}></div>
             <i><AiOutlineHome /></i> 
             <p>For You</p>
           </div>
+          </Link>
 
-          <div onClick={ShowLibrary} >
+          <Link to={"/library"}>
+          <div onClick={ShowLibrary}>
             <div className='library-active' style={{ backgroundColor: `${showActiveLibrary}` }}></div>
             <i><IoBookmarkOutline /></i> 
             <p>My Library</p>
           </div>
-
+          </Link>
           <div><div className='inactive-state'></div><i><FaPenClip /></i> <p>Highlights</p></div>
           <div><div className='inactive-state'></div><i><RxMagnifyingGlass /></i> <p>Search</p></div>
       </div>

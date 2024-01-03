@@ -1,60 +1,99 @@
-import React, { useState } from 'react'
-import Library from '../componets/for-you/Library';
-import ForYouPage from '../componets/for-you/ForYouPage';
-import logo from '../images/logo.png'
-import Nav from '../componets/for-you/Nav';
-import SearchBar from '../componets/for-you/SearchBar';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
+import { IoMdPlayCircle } from "react-icons/io";
+import { Link } from 'react-router-dom'
+import Book from '../componets/Book';
 
 
-function ForYou() {
-  
-  const [showForYou, setshowForYou] = useState(true)
-  const [showLibrary, setshowLibrary] = useState(false)
-  const [showActiveForYou, setshowActive] = useState("rgba(0, 205, 21, 0.661)")
-  const [showActiveLibrary, setshowActiveLibrary] = useState("")
- 
-  function ShowForYou(){
-    if(!showForYou){
-      setshowForYou(true)
-      setshowActive("rgba(0, 205, 21, 0.661)")
+function ForYouPage() {
+    const[selectedBooks, setSelectedBooks] = useState([])
+    const[recommendedBooks, setrecommendedBooks] = useState([])
+    const[suggestedBooks, setSuggestedBooks] = useState([])
 
-      setshowActiveLibrary(" ")
-      setshowLibrary(false)
+    async function getBooks(constVal, api){
+      const { data } = await axios.get(api)
+      constVal(data)
+      
     }
-  }
 
-  function ShowLibrary(){
-    if(!showLibrary){
-      setshowLibrary(true)
-      setshowActiveLibrary("rgba(0, 205, 21, 0.661)")
-
-      setshowActive(" ")
-      setshowForYou(false)
-    }
-  }
-
-
-  /* Trying giving it a class name with that green selected style instead */
-
-
-
+    useEffect(() => {
+      getBooks(setSelectedBooks, 'https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected')
+      getBooks(setrecommendedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
+      getBooks(setSuggestedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested")
+    },[])
+    console.log(suggestedBooks)
   return (
-    <>
-      <div className='Container'>
-
-        <Nav showActiveForYou={showActiveForYou} showActiveLibrary={showActiveLibrary} ShowLibrary={ShowLibrary} ShowForYou={ShowForYou} logo={logo} />
+    <> 
+      <div className='ForYou__Container'>
 
         <section>
-          <SearchBar/>
-          
-          <div className='content__container'>
-            {showForYou && <ForYouPage />}
-            {showLibrary && <Library/>}
-          </div>
+            <h2>Selected just for you</h2>
+            
+            {
+              selectedBooks.map(book => (
+                <div className='Selected__Book__Section' key={book.id} >
+                  <p>{book.subTitle}</p>
+                  <div className='line'></div>
+                  <div className='Selected__Book__area'>
+                      <img className='Selected__Book' src={book.imageLink} alt="" />
+                      <div className="Selected__Book__Info">
+                          <h1>{book.title}</h1>
+                          <h2>{book.author}</h2>
+                          <div><IoMdPlayCircle /> <h3>3mins 23secs</h3> </div>
+                      </div>
+                  </div>
+                </div>
+              ))}
         </section>
+
+        <section className="Recommended__Books__Section">
+            <h2>Recommended For You</h2>
+            <p>We think you'll like these</p>
+
+            <div className="Recommended__Books">
+                {
+                  recommendedBooks.slice(0,4).map(book => (
+                    <Link to={`/book/${book.id}`} >
+                    <Book key={book.id}
+                          imageLink={book.imageLink} 
+                          title={book.title} 
+                          author={book.author} 
+                          subTitle={book.subTitle} 
+                          averageRating = {book.averageRating}
+                    />
+                    </Link>
+                ))}
+                
+                
+
+            </div>
+        </section>
+
+        <section className="Recommended__Books__Section">
+            <h2>Suggested Books</h2>
+            <p>We think you'll like these</p>
+
+            <div className="Recommended__Books">
+                {
+                  suggestedBooks.slice(0,4).map(book => (
+                    <Link to={`/book/${book.id}`}  >
+                    <Book key={book.id}
+                          imageLink={book.imageLink} 
+                          title={book.title} 
+                          author={book.author} 
+                          subTitle={book.subTitle} 
+                          averageRating = {book.averageRating}
+                    />
+                    </Link>
+                ))}
+              </div>
+        </section>
+
+
       </div>
+    
     </>
   )
 }
 
-export default ForYou
+export default ForYouPage

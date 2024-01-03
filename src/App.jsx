@@ -1,26 +1,38 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+
 import Home from './pages/Home';
 import BookInfo from './pages/BookInfo';
-import ForYou from './pages/ForYou';
+import ForYouPage from './pages/ForYou';
+import Library from './pages/Library';
+import Nav from './componets/Nav';
+import SearchBar from './componets/SearchBar';
+
+import logo from './images/logo.png'
+
 
 function App() {
   
   return (
     <>
-      
-      <Router>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/for-you" element={<ForYou/>} />
-          <Route path='/book/:id' element={<BookInfo/>}/>
-        </Routes>
-      </Router>
-      
-      
-      
+
+      <Routes>
+        <Route index element={<Home/>}/>
+      </Routes>
+
+      <div className='Container'>
+        <Nav logo={logo} />
+        <section>
+          <SearchBar/>
+          <div className='content__container'>
+            <Routes>
+              <Route path="/for-you" element={<ForYouPage/>} />
+              <Route path="/library" element={<Library/>} />
+              <Route path='/book/:id' element={<BookInfo/>}/>
+            </Routes>
+          </div>
+        </section>
+      </div>
     </>
   );
 }
