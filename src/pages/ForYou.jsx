@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import Book from '../componets/Book';
 
 
+
 function ForYouPage() {
     const[selectedBooks, setSelectedBooks] = useState([])
     const[recommendedBooks, setrecommendedBooks] = useState([])
@@ -13,7 +14,6 @@ function ForYouPage() {
     async function getBooks(constVal, api){
       const { data } = await axios.get(api)
       constVal(data)
-      
     }
 
     useEffect(() => {
@@ -21,7 +21,7 @@ function ForYouPage() {
       getBooks(setrecommendedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
       getBooks(setSuggestedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested")
     },[])
-    console.log(suggestedBooks)
+    
   return (
     <> 
       <div className='ForYou__Container'>
@@ -46,11 +46,11 @@ function ForYouPage() {
               ))}
         </section>
 
-        <section className="Recommended__Books__Section">
+        <section className="Books__Section">
             <h2>Recommended For You</h2>
             <p>We think you'll like these</p>
 
-            <div className="Recommended__Books">
+            <div className="Books__Section__Container">
                 {
                   recommendedBooks.slice(0,4).map(book => (
                     <Link to={`/book/${book.id}`} >
@@ -69,11 +69,11 @@ function ForYouPage() {
             </div>
         </section>
 
-        <section className="Recommended__Books__Section">
+        <section className="Books__Section">
             <h2>Suggested Books</h2>
             <p>We think you'll like these</p>
 
-            <div className="Recommended__Books">
+            <div className="Books__Section__Container">
                 {
                   suggestedBooks.slice(0,4).map(book => (
                     <Link to={`/book/${book.id}`}  >

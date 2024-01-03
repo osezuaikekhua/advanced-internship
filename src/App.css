@@ -850,21 +850,30 @@ button:disabled {
   font-size: 13px;
 }
 
+/* Library Section */
+
+.Library__Container{
+    width: 100%;
+  padding: 50px 20%;
+  color: #052e45;
+}
+
+
 /* Book Componet */
 
-.Recommended__Books__Section{
+.Books__Section{
   margin-bottom: 50px;
 }
 
-.Recommended__Books{
+.Books__Section__Container{
   display: flex;
 overflow: hidden;
 }
 
-.Recommended__Books__Section h2{
+.Books__Section h2{
   margin-bottom: 15px;
 }
-.Recommended__Books__Section p{
+.Books__Section p{
   margin-bottom: 30px;
 }
 
