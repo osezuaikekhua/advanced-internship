@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function Modual({showModule}) {
+function Modual({showModule, setLoginState, setAccountInformation}) {
 
 
   const [showLogIn, setShowLogIn] = useState(true)
@@ -53,7 +53,7 @@ function Modual({showModule}) {
        <div className='module__login module__container'>
           <div className='module__close'><h1 onClick={showModule}><MdClose /></h1></div>
           
-          { showLogIn && <LogIn showSignIn = {ShowSignIn} resetPass = {ResetPass}  />}
+          { showLogIn && <LogIn showSignIn = {ShowSignIn} resetPass = {ResetPass} setLoginState={setLoginState} setAccountInformation={setAccountInformation} />}
           { showSignIn && <SignIn showLogIn = {ShowLogIn} />}
           { showResetPass && <ResetPassword showLogIn = {ShowLogIn} /> }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 import { RxMagnifyingGlass } from "react-icons/rx";
@@ -11,7 +11,10 @@ import { GoGear } from "react-icons/go";
 import { GoQuestion } from "react-icons/go";
 import { BsArrowBarRight } from "react-icons/bs";
 
-function Nav({logo}) {
+import { signOut } from 'firebase/auth';
+import { database } from './Modules/FireBaseConfig';
+
+function Nav({logo, setLoginState}) {
   
   const [showForYou, setshowForYou] = useState(true)
   const [showLibrary, setshowLibrary] = useState(false)
@@ -39,6 +42,13 @@ function Nav({logo}) {
   }
 
 
+
+  const handleSigningOut = () => {
+    signOut(database).then(val =>{
+      console.log("logged out")
+    })
+  }
+
   return (
     <nav>
     <div className='nav__logo'><img src={logo} alt="" /></div>
@@ -46,27 +56,30 @@ function Nav({logo}) {
       <div className='nav__section__text'>
 
           <Link to={"/for-you"}>
-          <div onClick={ShowForYou}>
-            <div className='for-you-active' style={{ backgroundColor: `${showActiveForYou}` }}></div>
-            <i><AiOutlineHome /></i> 
-            <p>For You</p>
-          </div>
+            <div onClick={ShowForYou}>
+              <div className='for-you-active' style={{ backgroundColor: `${showActiveForYou}` }}></div>
+              <i><AiOutlineHome /></i> 
+              <p>For You</p>
+            </div>
           </Link>
 
           <Link to={"/library"}>
-          <div onClick={ShowLibrary}>
-            <div className='library-active' style={{ backgroundColor: `${showActiveLibrary}` }}></div>
-            <i><IoBookmarkOutline /></i> 
-            <p>My Library</p>
-          </div>
+            <div onClick={ShowLibrary}>
+              <div className='library-active' style={{ backgroundColor: `${showActiveLibrary}` }}></div>
+              <i><IoBookmarkOutline /></i> 
+              <p>My Library</p>
+            </div>
           </Link>
           <div><div className='inactive-state'></div><i><FaPenClip /></i> <p>Highlights</p></div>
           <div><div className='inactive-state'></div><i><RxMagnifyingGlass /></i> <p>Search</p></div>
       </div>
       <div className='nav__section__text'>
-          <div><div className='active-state'></div><i><GoGear /></i> <p>Settings</p></div>
+          <Link to={"/settings"}>
+            <div><div className='active-state'></div><i><GoGear /></i> <p>Settings</p></div>
+          </Link>
+          
           <div><div className='inactive-state'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
-          <div><div className='active-state'></div><i><BsArrowBarRight /></i> <p>Logout</p></div>
+          <div onClick={handleSigningOut}><div className='active-state'></div><i><BsArrowBarRight /></i> <p>Logout</p></div>
       </div>
     </div>
   </nav>

@@ -7,10 +7,12 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
 
 import { database } from '../FireBaseConfig';
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword} from "firebase/auth";
+import { signInWithEmailAndPassword} from "firebase/auth";
 
 
-function LogIn({showSignIn, resetPass }) {
+
+
+function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation }) {
 
 
   const[error, setError] = useState("")
@@ -26,6 +28,8 @@ function LogIn({showSignIn, resetPass }) {
     signInWithEmailAndPassword(database,email,password).then(data => {
       console.log(data,"authData")
       history('/for-you')
+      setAccountInformation(email)
+      setLoginState(true)
     }).catch(err =>{
 
       setError(`Error: ${err.code}`)

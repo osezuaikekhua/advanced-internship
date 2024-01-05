@@ -6,7 +6,8 @@ import Book from '../componets/Book';
 
 
 
-function ForYouPage() {
+
+function ForYouPage({loginState}) {
     const[selectedBooks, setSelectedBooks] = useState([])
     const[recommendedBooks, setrecommendedBooks] = useState([])
     const[suggestedBooks, setSuggestedBooks] = useState([])
@@ -20,6 +21,7 @@ function ForYouPage() {
       getBooks(setSelectedBooks, 'https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected')
       getBooks(setrecommendedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
       getBooks(setSuggestedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested")
+      console.log(loginState)
     },[])
     
   return (
@@ -55,6 +57,7 @@ function ForYouPage() {
                   recommendedBooks.slice(0,4).map(book => (
                     <Link to={`/book/${book.id}`} >
                     <Book key={book.id}
+                          subscriptionRequire={book.subscriptionRequired}
                           imageLink={book.imageLink} 
                           title={book.title} 
                           author={book.author} 
