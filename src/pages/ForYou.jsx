@@ -3,7 +3,7 @@ import axios from 'axios'
 import { IoMdPlayCircle } from "react-icons/io";
 import { Link } from 'react-router-dom'
 import Book from '../componets/Book';
-
+import Skeleton from '../componets/Skeleton';
 
 
 
@@ -17,11 +17,11 @@ function ForYouPage({loginState}) {
       constVal(data)
     }
 
+
     useEffect(() => {
       getBooks(setSelectedBooks, 'https://us-central1-summaristt.cloudfunctions.net/getBooks?status=selected')
       getBooks(setrecommendedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=recommended")
       getBooks(setSuggestedBooks, "https://us-central1-summaristt.cloudfunctions.net/getBooks?status=suggested")
-      console.log(loginState)
     },[])
     
   return (
@@ -53,7 +53,7 @@ function ForYouPage({loginState}) {
             <p>We think you'll like these</p>
 
             <div className="Books__Section__Container">
-                {
+                {recommendedBooks.length ?
                   recommendedBooks.slice(0,4).map(book => (
                     <Link to={`/book/${book.id}`} >
                     <Book key={book.id}
@@ -65,7 +65,14 @@ function ForYouPage({loginState}) {
                           averageRating = {book.averageRating}
                     />
                     </Link>
-                ))}
+                   )) 
+                :    
+                Array(4).fill(0).map(() => (
+                  <div className="Book__Skeleton"></div>
+                ))
+              
+              
+              }
                 
                 
 
@@ -77,7 +84,7 @@ function ForYouPage({loginState}) {
             <p>We think you'll like these</p>
 
             <div className="Books__Section__Container">
-                {
+                {suggestedBooks.length ?
                   suggestedBooks.slice(0,4).map(book => (
                     <Link to={`/book/${book.id}`}  >
                     <Book key={book.id}
@@ -88,7 +95,11 @@ function ForYouPage({loginState}) {
                           averageRating = {book.averageRating}
                     />
                     </Link>
-                ))}
+                )) :
+                Array(4).fill(0).map(() => (
+                  <div className="Book__Skeleton"></div>
+                ))
+              }
               </div>
         </section>
 

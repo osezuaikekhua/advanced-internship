@@ -13,6 +13,7 @@ import logo from './images/logo.png'
 
 import { useState } from 'react';
 
+import {Helmet} from "react-helmet";
 
 
 function App() {
@@ -22,7 +23,10 @@ function App() {
   
   return (
     <>
-
+    <Helmet>
+        <title>Summarist</title>
+        <meta name="description" content="Helmet application" />
+    </Helmet>
       <Routes>
         <Route index element={<Home setLoginState = {setLoginState} setAccountInformation = {setAccountInformation} />}/>
       </Routes>
