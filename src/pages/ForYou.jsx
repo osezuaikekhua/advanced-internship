@@ -68,7 +68,9 @@ function ForYouPage({loginState}) {
                    )) 
                 :    
                 Array(4).fill(0).map(() => (
-                  <div className="Book__Skeleton"></div>
+                  <div className="Book">
+                    <Skeleton width = {"150px"} height = {"300px"} borderRadius = {"10px"} />
+                </div>    
                 ))
               
               
@@ -97,7 +99,9 @@ function ForYouPage({loginState}) {
                     </Link>
                 )) :
                 Array(4).fill(0).map(() => (
-                  <div className="Book__Skeleton"></div>
+                  <div className="Book">
+                    <Skeleton width = {"150px"} height = {"300px"} borderRadius = {"10px"} />
+                </div>    
                 ))
               }
               </div>
