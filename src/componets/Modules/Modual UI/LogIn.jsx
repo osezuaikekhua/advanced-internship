@@ -12,7 +12,7 @@ import { signInWithEmailAndPassword} from "firebase/auth";
 
 
 
-function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation }) {
+function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation, setIsFYvisible }) {
 
 
   const[error, setError] = useState("")
@@ -30,11 +30,12 @@ function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation }) {
       history('/for-you')
       setAccountInformation(email)
       setLoginState(true)
+      setIsFYvisible(true)
     }).catch(err =>{
 
       setError(`Error: ${err.code}`)
       setTimeout(() => {  
-        setError(" ")
+        setError(" Error! ")
       }, 4000);
       
     })

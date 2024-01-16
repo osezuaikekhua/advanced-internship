@@ -14,7 +14,7 @@ import { BsArrowBarRight } from "react-icons/bs";
 import { signOut } from 'firebase/auth';
 import { database } from './Modules/FireBaseConfig';
 
-function Nav({logo, setLoginState}) {
+function Nav({logo,}) {
   
   const [showForYou, setshowForYou] = useState(true)
   const [showLibrary, setshowLibrary] = useState(false)
@@ -67,7 +67,8 @@ function Nav({logo, setLoginState}) {
 
   const handleSigningOut = () => {
     signOut(database).then(val =>{
-      setLoginState(false)
+      console.log(val, "authData")
+
     })
   }
 

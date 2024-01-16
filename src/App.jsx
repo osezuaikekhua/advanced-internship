@@ -20,6 +20,7 @@ function App() {
 
   const[loginState, setLoginState] = useState(null)
   const[accountInformation, setAccountInformation] = useState(" ")
+  const[ isFYvisible, setIsFYvisible ] = useState(false)
   
   return (
     <>
@@ -28,9 +29,9 @@ function App() {
         <meta name="description" content="Helmet application" />
     </Helmet>
       <Routes>
-        <Route index element={<Home setLoginState = {setLoginState} setAccountInformation = {setAccountInformation} />}/>
+        <Route index element={<Home setLoginState = {setLoginState} setAccountInformation = {setAccountInformation} setIsFYvisible={setIsFYvisible} />}/>
       </Routes>
-
+    { isFYvisible ?
       <div className='Container'>
         <Nav logo={logo} />
         <section>
@@ -45,6 +46,9 @@ function App() {
           </div>
         </section>
       </div>
+      :
+      " "
+    }  
     </>
   );
 }

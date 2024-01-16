@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function Modual({showModule, setLoginState, setAccountInformation}) {
+function Modual({showModule, setLoginState, setAccountInformation, setIsFYvisible}) {
 
 
   const [showLogIn, setShowLogIn] = useState(true)
@@ -53,7 +53,7 @@ function Modual({showModule, setLoginState, setAccountInformation}) {
        <div className='module__login module__container'>
           <div className='module__close'><h1 onClick={showModule}><MdClose /></h1></div>
           
-          { showLogIn && <LogIn showSignIn = {ShowSignIn} resetPass = {ResetPass} setLoginState={setLoginState} setAccountInformation={setAccountInformation} />}
+          { showLogIn && <LogIn showSignIn = {ShowSignIn} resetPass = {ResetPass} setLoginState={setLoginState} setAccountInformation={setAccountInformation} setIsFYvisible={setIsFYvisible}/>}
           { showSignIn && <SignIn showLogIn = {ShowLogIn} />}
           { showResetPass && <ResetPassword showLogIn = {ShowLogIn} /> }
 
