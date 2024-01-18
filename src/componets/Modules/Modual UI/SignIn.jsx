@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { FcGoogle } from "react-icons/fc";
+import { Context } from '../../../App';
 
 
 import { database } from '../FireBaseConfig';
@@ -7,6 +8,10 @@ import {createUserWithEmailAndPassword} from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 
 function SignIn({showLogIn}) {
+
+  const { setShowModal } = useContext(Context)
+  const { setAccountInformation } = useContext(Context)
+  const { setLoginState } = useContext(Context)
 
   const[error, setError] = useState("")
   const history = useNavigate()
@@ -19,13 +24,21 @@ function SignIn({showLogIn}) {
     const password = e.target.password.value
    
     createUserWithEmailAndPassword(database,email,password).then(data => {
+
       console.log(data,"authData")
       history('/for-you')
+
+      setShowModal(false)
+      setAccountInformation(email)
+      setLoginState(true)
+
     }).catch(err =>{
+
       setError(`Error: ${err.code}`)
       setTimeout(() => {  
         setError(" ")
       }, 4000);
+
     })
   }
 

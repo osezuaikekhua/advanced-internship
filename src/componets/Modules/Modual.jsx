@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import LogIn from './Modual UI/LogIn';
 import SignIn from './Modual UI/SignIn';
 import ResetPassword from './Modual UI/ResetPassword';
+
+import { Context } from '../../App';
 
 import { MdClose } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
 
 
-function Modual({showModule, setLoginState, setAccountInformation}) {
+function Modual( ) {
 
+  const { showModule } = useContext(Context)
 
   const [showLogIn, setShowLogIn] = useState(true)
   const [showSignIn, setShowSignIn] = useState(false)
@@ -53,7 +56,7 @@ function Modual({showModule, setLoginState, setAccountInformation}) {
        <div className='module__login module__container'>
           <div className='module__close'><h1 onClick={showModule}><MdClose /></h1></div>
           
-          { showLogIn && <LogIn showSignIn = {ShowSignIn} resetPass = {ResetPass} setLoginState={setLoginState} setAccountInformation={setAccountInformation}/>}
+          { showLogIn && <LogIn showSignIn = {ShowSignIn} resetPass = {ResetPass} />}
           { showSignIn && <SignIn showLogIn = {ShowLogIn} />}
           { showResetPass && <ResetPassword showLogIn = {ShowLogIn} /> }
 

@@ -7,7 +7,7 @@ import Skeleton from '../componets/Skeleton';
 
 
 
-function ForYouPage({loginState}) {
+function ForYouPage( ) {
     const[selectedBooks, setSelectedBooks] = useState([])
     const[recommendedBooks, setrecommendedBooks] = useState([])
     const[suggestedBooks, setSuggestedBooks] = useState([])

@@ -12,24 +12,29 @@ import { signInWithEmailAndPassword} from "firebase/auth";
 
 
 
-function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation }) {
+function LogIn({showSignIn, resetPass}) {
 
-  const { setIsFYvisible } = useContext(Context)
+  //const { setIsFYvisible } = useContext(Context)
+  const { setShowModal } = useContext(Context)
+  const { setAccountInformation } = useContext(Context)
+  const { setLoginState } = useContext(Context)
+
   const[error, setError] = useState("")
 
   const history = useNavigate()
 
+  
   const handleSubmit =(e,type)=>{
     e.preventDefault()
     const email = e.target.email.value
     const password = e.target.password.value
-   
     
     signInWithEmailAndPassword(database,email,password).then(data => { 
       history('/for-you')
+      setShowModal(false)
       setAccountInformation(email)
       setLoginState(true)
-      setIsFYvisible(true)
+      //setIsFYvisible(true)
      console.log(data,"authData") 
     }).catch(err =>{
 

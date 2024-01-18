@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
 
@@ -14,7 +14,9 @@ import { BsArrowBarRight } from "react-icons/bs";
 import { signOut } from 'firebase/auth';
 import { database } from './Modules/FireBaseConfig';
 
-function Nav({logo,}) {
+import { Context } from '../App';
+
+function Nav({logo}) {
   
   const [showForYou, setshowForYou] = useState(true)
   const [showLibrary, setshowLibrary] = useState(false)
@@ -23,7 +25,9 @@ function Nav({logo,}) {
   const [showActiveLibrary, setshowActiveLibrary] = useState("")
   const [showActiveSettings, setshowActiveSettings] = useState("")
 
-  const [loginState, setLoginState] = useState(true)
+  const { loginState } = useContext(Context)
+  const { setLoginState } = useContext(Context)
+  const { showModule } = useContext(Context)
 
   const location = useLocation()
 
@@ -109,7 +113,14 @@ function Nav({logo,}) {
           </Link>
           
           <div className='No-access'><div className='inactive-state'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
-          <div onClick={handleSigningOut} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> { loginState ? <p>Log out</p> : <p>Log in</p> }  </div>
+
+          {
+            loginState ?
+            <div onClick={handleSigningOut} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> <p>Log out</p> </div>
+            :
+            <div onClick={showModule} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> <p>Log in</p> </div>
+          }
+          
       </div>
     </div>
   </nav>
