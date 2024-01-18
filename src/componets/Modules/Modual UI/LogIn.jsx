@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-
+import React, { useContext, useEffect, useState } from 'react'
+import { Context } from '../../../App';
 
 import { GiCharacter } from "react-icons/gi";
 import { FcGoogle } from "react-icons/fc";
@@ -12,9 +12,9 @@ import { signInWithEmailAndPassword} from "firebase/auth";
 
 
 
-function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation, setIsFYvisible }) {
+function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation }) {
 
-
+  const { setIsFYvisible } = useContext(Context)
   const[error, setError] = useState("")
 
   const history = useNavigate()
@@ -25,12 +25,12 @@ function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation, set
     const password = e.target.password.value
    
     
-    signInWithEmailAndPassword(database,email,password).then(data => {
-      console.log(data,"authData")
+    signInWithEmailAndPassword(database,email,password).then(data => { 
       history('/for-you')
       setAccountInformation(email)
       setLoginState(true)
       setIsFYvisible(true)
+     console.log(data,"authData") 
     }).catch(err =>{
 
       setError(`Error: ${err.code}`)
@@ -40,6 +40,8 @@ function LogIn({showSignIn, resetPass, setLoginState, setAccountInformation, set
       
     })
   }
+
+  
 
 
   return (

@@ -11,25 +11,44 @@ import Settings from './pages/Settings';
 
 import logo from './images/logo.png'
 
-import { useState } from 'react';
+import React, { useState, useEffect, createContext } from 'react'
 
 import {Helmet} from "react-helmet";
+
+export const Context = createContext();
 
 
 function App() {
 
+  
+
   const[loginState, setLoginState] = useState(null)
   const[accountInformation, setAccountInformation] = useState(" ")
   const[ isFYvisible, setIsFYvisible ] = useState(false)
+
+  useEffect(() => {
+    const visibleData = window.localStorage.getItem('FOR_YOU_PAGE')
+    if ( visibleData !== null ) setIsFYvisible(JSON.parse(visibleData))
+ }, [])
   
+  useEffect(() => {
+     window.localStorage.setItem('FOR_YOU_PAGE', JSON.stringify(isFYvisible)) 
+  }, [isFYvisible])
+
   return (
+    
+
     <>
     <Helmet>
         <title>Summarist</title>
         <meta name="description" content="Helmet application" />
     </Helmet>
       <Routes>
-        <Route index element={<Home setLoginState = {setLoginState} setAccountInformation = {setAccountInformation} setIsFYvisible={setIsFYvisible} />}/>
+        <Route index element={ 
+           <Context.Provider value={{isFYvisible, setIsFYvisible}}>
+           <Home setLoginState = {setLoginState} setAccountInformation = {setAccountInformation}  />
+           </Context.Provider>
+        }/>
       </Routes>
     { isFYvisible ?
       <div className='Container'>

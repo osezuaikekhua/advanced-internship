@@ -12,7 +12,7 @@ import Modual from '../componets/Modules/Modual'
 import logo from '../images/logo.png'
 import landing from '../images/landing.png'
 
-function Home({showModule, setLoginState, setAccountInformation, setIsFYvisible}) {
+function Home({showModule, setLoginState, setAccountInformation}) {
   const [showModal, setShowModal] = useState(false)
   function showModule(){
     if(!showModal){
@@ -24,7 +24,7 @@ function Home({showModule, setLoginState, setAccountInformation, setIsFYvisible}
 
   return (
     <>
-    { showModal && <Modual showModule={showModule} setLoginState={setLoginState} setAccountInformation={setAccountInformation} setIsFYvisible={setIsFYvisible}/> } 
+    { showModal && <Modual showModule={showModule} setLoginState={setLoginState} setAccountInformation={setAccountInformation} /> } 
     <Nav LogoImg = {logo} showModule={showModule} />
     <Landing LandingImg = {landing} showModule = {showModule} />
     <Features />

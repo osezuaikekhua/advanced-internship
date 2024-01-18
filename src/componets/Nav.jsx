@@ -23,6 +23,8 @@ function Nav({logo,}) {
   const [showActiveLibrary, setshowActiveLibrary] = useState("")
   const [showActiveSettings, setshowActiveSettings] = useState("")
 
+  const [loginState, setLoginState] = useState(true)
+
   const location = useLocation()
 
   function ShowForYou(){
@@ -68,7 +70,8 @@ function Nav({logo,}) {
   const handleSigningOut = () => {
     signOut(database).then(val =>{
       console.log(val, "authData")
-
+      
+      setLoginState(false)
     })
   }
 
@@ -106,7 +109,7 @@ function Nav({logo,}) {
           </Link>
           
           <div className='No-access'><div className='inactive-state'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
-          <div onClick={handleSigningOut} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> <p>Logout</p></div>
+          <div onClick={handleSigningOut} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> { loginState ? <p>Log out</p> : <p>Log in</p> }  </div>
       </div>
     </div>
   </nav>
