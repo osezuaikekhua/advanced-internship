@@ -701,10 +701,11 @@ button:disabled {
 
 .nav__section__text div{
   height: 60px;
-  padding: 20px 0 ;
+  padding: 20px 10px ;
   font-size: 16px;
   display: flex;
   align-items: center;
+
 }
 
 .nav__section__text div:hover{
@@ -716,38 +717,42 @@ button:disabled {
   margin-right: 5px;
 }
 
+.extra-access{
+  cursor: pointer;
+  border-left: 10px solid rgba(0, 0, 0, 0);
+}
 .access{
   cursor: pointer;
+  border-left: 10px solid rgba(0, 0, 0, 0);
 }
 .No-access{
   cursor: not-allowed;
+  border-left: 10px solid #00000000;
 }
-
-.for-you-active{
+/*
+.inactive{
   height: 100%;
   width: 3%;
   margin-right: 15px;
-
+  background-color: rgba(0, 205, 21, 0.661) ;
 }
 
-.library-active{
-  height: 100%;
-  width: 3%;
-  margin-right: 15px;
-}
-
-.active-state{
+.never-active{
   height: 100%;
   width: 3%;
   margin-right: 15px;
 }
 
-.inactive-state{
-  height: 100%;
-  width: 3%;
-  margin-right: 15px;
+*/
 
+
+
+
+.active{
+  border-left: 10px solid rgba(0, 205, 21, 0.661);
 }
+
+
 
 /* End of navigation*/
 

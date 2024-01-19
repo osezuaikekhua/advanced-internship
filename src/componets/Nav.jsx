@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState, useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 
@@ -18,12 +18,7 @@ import { Context } from '../App';
 
 function Nav({logo}) {
   
-  const [showForYou, setshowForYou] = useState(true)
-  const [showLibrary, setshowLibrary] = useState(false)
-  const [showSettings, setshowSettings] = useState(false)
-  const [showActiveForYou, setshowActiveForyou] = useState("rgba(0, 205, 21, 0.661)")
-  const [showActiveLibrary, setshowActiveLibrary] = useState("")
-  const [showActiveSettings, setshowActiveSettings] = useState("")
+
 
   const { loginState } = useContext(Context)
   const { setLoginState } = useContext(Context)
@@ -31,44 +26,19 @@ function Nav({logo}) {
 
   const location = useLocation()
 
-  function ShowForYou(){
-    if(!showForYou){
-      setshowForYou(true)
-      setshowActiveForyou("rgba(0, 205, 21, 0.661)")
 
-      setshowActiveLibrary(" ")
-      setshowLibrary(false)
+  const tabLinks = document.querySelectorAll('.access')
 
-      setshowSettings(false)
-      setshowActiveSettings("")
-    }
-  }
+function Tabs () {
+  tabLinks.forEach(tabLinks => {
+    tabLinks.addEventListener('click', () => {
 
-  function ShowLibrary(){
-    if(!showLibrary){
-      setshowLibrary(true)
-      setshowActiveLibrary("rgba(0, 205, 21, 0.661)")
-
-      setshowActiveForyou(" ")
-      setshowForYou(false)
-
-      setshowSettings(false)
-      setshowActiveSettings("")
-    }
-  }
-
-  function ShowSettings(){
-    if(!showSettings){
-      setshowSettings(true)
-      setshowActiveSettings("rgba(0, 205, 21, 0.661)")
-
-      setshowActiveForyou(" ")
-      setshowForYou(false)
-
-      setshowActiveLibrary(" ")
-      setshowLibrary(false)
-    }
-  }
+      document.querySelector('.active')?.classList.remove('active')
+      tabLinks.classList.add('active')
+      
+    })
+  })
+}
 
 
   const handleSigningOut = () => {
@@ -79,6 +49,12 @@ function Nav({logo}) {
     })
   }
 
+useEffect(() => {
+  Tabs()
+},[])
+
+
+
   return (
     <nav>
     <div className='nav__logo'><img src={logo} alt="" /></div>
@@ -86,39 +62,39 @@ function Nav({logo}) {
       <div className='nav__section__text'>
 
           <Link to={"/for-you"}>
-            <div onClick={ShowForYou} className='access'>
-              <div className='inactive-state' style={{ backgroundColor: `${showActiveForYou}` }}></div>
+            <div className='access active'>
+              <div className='inactive'></div>
               <i><AiOutlineHome /></i> 
               <p>For You</p>
             </div>
           </Link>
 
-          <Link to={"/library"} className='access'>
-            <div onClick={ShowLibrary}>
-              <div className='inactive-state' style={{ backgroundColor: `${showActiveLibrary}` }}></div>
+          <Link to={"/library"} >
+            <div className='access'>
+              <div className='inactive'></div>
               <i><IoBookmarkOutline /></i> 
               <p>My Library</p>
             </div>
           </Link>
-          <div className='No-access'><div className='inactive-state'></div><i><FaPenClip /></i> <p>Highlights</p></div>
-          <div className='No-access'><div className='inactive-state'></div><i><RxMagnifyingGlass /></i> <p>Search</p></div>
+          <div className='No-access'><div className='never-active'></div><i><FaPenClip /></i> <p>Highlights</p></div>
+          <div className='No-access'><div className='never-active'></div><i><RxMagnifyingGlass /></i> <p>Search</p></div>
       </div>
       <div className='nav__section__text'>
           <Link to={"/settings"}>
-            <div onClick={ShowSettings} className='access'>
-              <div className='inactive-state' style={{ backgroundColor: `${showActiveSettings}` }}></div>
+            <div className='access'>
+              <div className='inactive'></div>
               <i><GoGear /></i>
               <p>Settings</p>
               </div>
           </Link>
           
-          <div className='No-access'><div className='inactive-state'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
+          <div className='No-access'><div className='never-active'></div><i><GoQuestion /></i> <p>Help & Support</p></div>
 
           {
             loginState ?
-            <div onClick={handleSigningOut} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> <p>Log out</p> </div>
+            <div onClick={handleSigningOut} className='extra-access'><div className='never-active'></div><i><BsArrowBarRight /></i> <p>Log out</p> </div>
             :
-            <div onClick={showModule} className='access'><div className='inactive-state'></div><i><BsArrowBarRight /></i> <p>Log in</p> </div>
+            <div onClick={showModule} className='extra-access'><div className='never-active'></div><i><BsArrowBarRight /></i> <p>Log in</p> </div>
           }
           
       </div>
