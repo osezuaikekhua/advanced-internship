@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 import Nav from '../componets/home/Nav'
@@ -13,8 +13,7 @@ import logo from '../images/logo.png'
 import landing from '../images/landing.png'
 
 function Home({ showModule}) {
-
-
+ 
   return (
     <>
     
@@ -29,7 +28,7 @@ function Home({ showModule}) {
         <div class="row">
           <div class="footer__top--wrapper">
             <div class="footer__block">
-              <div class="footer__link--title">Action</div>
+              <div class="footer__link--title" >Action</div>
               <div>
                 <div class="footer__link--wrapper">
                   <a class="footer__link">Summarist Magazine</a>

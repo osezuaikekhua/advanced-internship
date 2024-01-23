@@ -22,11 +22,8 @@ export const Context = createContext();
 
 function App() {
 
-  
-
-  const[loginState, setLoginState] = useState(null)
+  const[loginState, setLoginState] = useState(false)
   const[accountInformation, setAccountInformation] = useState(" ")
-  const[ isFYvisible, setIsFYvisible ] = useState(false)
   const[showModal, setShowModal] = useState(false)
 
   function showModule(){
@@ -36,6 +33,7 @@ function App() {
       setShowModal(false)
     }
   }
+
 
               
   return (

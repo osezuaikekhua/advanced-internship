@@ -19,6 +19,7 @@ function LogIn({showSignIn, resetPass}) {
   const { setAccountInformation } = useContext(Context)
   const { setLoginState } = useContext(Context)
 
+
   const[error, setError] = useState("")
 
   const history = useNavigate()
@@ -34,7 +35,7 @@ function LogIn({showSignIn, resetPass}) {
       setShowModal(false)
       setAccountInformation(email)
       setLoginState(true)
-      //setIsFYvisible(true)
+  
      console.log(data,"authData") 
     }).catch(err =>{
 
