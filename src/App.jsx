@@ -9,6 +9,7 @@ import Nav from './componets/Nav';
 import SearchBar from './componets/SearchBar';
 import Settings from './pages/Settings';
 import Modual from './componets/Modules/Modual';
+import AudioPlayer from './pages/AudioPlayer';
 
 import logo from './images/logo.png'
 
@@ -62,6 +63,7 @@ function App() {
                 <Route path="/library" element={<Library/>} />
                 <Route path='/book/:id' element={<BookInfo/>}/>
                 <Route path='/settings' element={<Settings />} />
+                <Route path='/player/:id' element={<AudioPlayer/>} />
               </Routes>
             </div>
           </section>

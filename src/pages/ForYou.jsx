@@ -90,6 +90,7 @@ function ForYouPage( ) {
                   suggestedBooks.slice(0,4).map(book => (
                     <Link to={`/book/${book.id}`}  >
                     <Book key={book.id}
+                          subscriptionRequire={book.subscriptionRequired}
                           imageLink={book.imageLink} 
                           title={book.title} 
                           author={book.author} 
