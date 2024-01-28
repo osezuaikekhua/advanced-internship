@@ -35,7 +35,7 @@ function LogIn({showSignIn, resetPass}) {
       setShowModal(false)
       setAccountInformation(email)
       setLoginState(true)
-  
+      
      console.log(data,"authData") 
     }).catch(err =>{
 

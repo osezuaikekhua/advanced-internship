@@ -31,7 +31,7 @@ function ForYouPage( ) {
         <section>
             <h2>Selected just for you</h2>
             
-            {
+            {selectedBooks.length ?
               selectedBooks.map(book => (
                 <div className='Selected__Book__Section' key={book.id} >
                   <p>{book.subTitle}</p>
@@ -45,7 +45,10 @@ function ForYouPage( ) {
                       </div>
                   </div>
                 </div>
-              ))}
+              )) 
+              :
+                <Skeleton width = {"100%"} maxWidth = {"700px"} height = {"175px"} marginBottom = {"15px"}/>
+              }
         </section>
 
         <section className="Books__Section">
@@ -69,12 +72,17 @@ function ForYouPage( ) {
                 :    
                 Array(4).fill(0).map(() => (
                   <div className="Book">
-                    <Skeleton width = {"150px"} height = {"300px"} borderRadius = {"10px"} />
+                    <Skeleton width = {"150px"} height = {"175px"} marginBottom = {"15px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"15px"}/>
+                    <Skeleton width = {"75px"}  height = {"15px"}  marginBottom = {"15px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"5px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"5px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"5px"}/>
                 </div>    
                 ))
               
               
-              }
+                }
                 
                 
 
@@ -101,7 +109,12 @@ function ForYouPage( ) {
                 )) :
                 Array(4).fill(0).map(() => (
                   <div className="Book">
-                    <Skeleton width = {"150px"} height = {"300px"} borderRadius = {"10px"} />
+                    <Skeleton width = {"150px"} height = {"175px"} marginBottom = {"15px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"15px"}/>
+                    <Skeleton width = {"75px"}  height = {"15px"}  marginBottom = {"15px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"5px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"5px"}/>
+                    <Skeleton width = {"150px"} height = {"15px"}  marginBottom = {"5px"}/>
                 </div>    
                 ))
               }

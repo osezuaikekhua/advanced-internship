@@ -29,29 +29,27 @@ function Nav({logo}) {
 
   const tabLinks = document.querySelectorAll('.access')
 
-function Tabs () {
-  tabLinks.forEach(tabLinks => {
-    tabLinks.addEventListener('click', () => {
-
-      document.querySelector('.active')?.classList.remove('active')
-      tabLinks.classList.add('active')
-      
+  function Tabs () {
+    const links = document.querySelectorAll(".access")
+    
+    links.forEach( tab =>{
+      tab.addEventListener('click', () => {
+        document.querySelector('.active')?.classList.remove('active')
+        tab.classList.add('active')
+      })
     })
-  })
-}
+  }
 
 
   const handleSigningOut = () => {
     signOut(database).then(val =>{
-      console.log(val, "authData")
-      
       setLoginState(false)
     })
   }
 
-useEffect(() => {
-  Tabs()
-},[])
+  useEffect(() => {
+    Tabs()
+  })
 
 
 

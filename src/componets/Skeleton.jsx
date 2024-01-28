@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Skeleton({ width, height, borderRadius }) {
+function Skeleton({ width, height, borderRadius, marginBottom, maxWidth }) {
   return (
     <div
     className="skeleton-box"
@@ -8,6 +8,8 @@ function Skeleton({ width, height, borderRadius }) {
       width,
       height,
       borderRadius,
+      marginBottom,
+      maxWidth,
     }}
   ></div>
   )
