@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios'
+import AudioPlayer from '../componets/audio player/AudioPlayer'
 
 
 
-function AudioPlayer() {
+
+function BookSummary() {
     const { id } = useParams()
     const [ bookSummary, setBookSummary ] = useState({})
 
@@ -26,9 +28,9 @@ function AudioPlayer() {
             <h3>{bookSummary.summary}</h3>    
             
         </div>
-        
+        <AudioPlayer/>
     </>
   )
 }
 
-export default AudioPlayer
+export default BookSummary
