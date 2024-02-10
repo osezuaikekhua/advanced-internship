@@ -7,7 +7,7 @@ import Controls from './Controls'
 import ProgressBar from './ProgressBar'
 
 
-function AudioPlayer() {
+function AudioPlayer({bookSummary}) {
     const [trackIndex, setTrackIndex] = useState(0);
     const [currentTrack, setCurrentTrack] = useState(tracks[trackIndex]);
     const [timeProgress, setTimeProgress] = useState(0);
@@ -23,7 +23,7 @@ function AudioPlayer() {
         <div className='inner'>
             <DisplayTrack 
                 currentTrackSrc={currentTrack.src} 
-                currentTrackThumbnail={currentTrack.thumbnail}
+                {...{bookSummary}}
                 currentTrackTitle={currentTrack.title}
                 currentTrackAuthor={currentTrack.author}
                 {...{audioRef, setDuration, progressBarRef}}

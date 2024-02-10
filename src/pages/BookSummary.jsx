@@ -26,9 +26,8 @@ function BookSummary() {
         <div className='Book__Summary__Page'>
             <h1 className='Book__Info-title'>{bookSummary.title}</h1>
             <h3>{bookSummary.summary}</h3>    
-            
         </div>
-        <AudioPlayer/>
+        <AudioPlayer {...{bookSummary}}/>
     </>
   )
 }

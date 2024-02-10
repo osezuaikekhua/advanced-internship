@@ -4,7 +4,7 @@ import { BsMusicNoteBeamed } from 'react-icons/bs';
 
 function DisplayTrack({ 
   currentTrackSrc, 
-  currentTrackThumbnail, 
+  bookSummary, 
   currentTrackTitle, 
   currentTrackAuthor, 
   audioRef, 
@@ -22,25 +22,25 @@ function DisplayTrack({
   return (
     <div>
       <audio
-        src={currentTrackSrc}
+        src={bookSummary.audioLink}
         ref={audioRef}
         onLoadedMetadata={onLoadedMetadata}
       />
       <div className="audio-info">
-      <div className="audio-image">  
-          {currentTrackThumbnail ? (
-            <img src={currentTrackThumbnail} alt="audio avatar" />
-          ) : (
-            <div className="icon-wrapper">
-              <span className="audio-icon">
-                <BsMusicNoteBeamed />
-              </span>
-            </div>
-          )}
-        </div>
-        <div className="text">
-          <p className="title">{currentTrackTitle}</p>
-          <p>{currentTrackAuthor}</p>
+        <div className="audio-image">  
+            {bookSummary.imageLink ? (
+              <img src={bookSummary.imageLink} alt="audio avatar" />
+            ) : (
+              <div className="icon-wrapper">
+                <span className="audio-icon">
+                  <BsMusicNoteBeamed />
+                </span>
+              </div>
+            )}
+          </div>
+        <div className="audio-text">
+          <p className="audio-title">{bookSummary.title}</p>
+          <p>{bookSummary.author}</p>
         </div>
       </div>
     </div>

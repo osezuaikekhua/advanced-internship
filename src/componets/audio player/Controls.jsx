@@ -1,13 +1,14 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-
+import { MdPauseCircle } from "react-icons/md";
+import { IoMdPlayCircle } from "react-icons/io";
+import { GrForwardTen } from "react-icons/gr";
+import { 
+        TbRewindBackward10,
+        TbRewindForward10 
+} from "react-icons/tb";
 // icons
 import {
     IoPlayBackSharp,
-    IoPlayForwardSharp,
-    IoPlaySkipBackSharp,
-    IoPlaySkipForwardSharp,
-    IoPlaySharp,
-    IoPauseSharp,
 } from 'react-icons/io5';
 
 function Controls({ 
@@ -69,16 +70,16 @@ function Controls({
         <div className="controls-wrapper">
             <div className="controls">
                 
-                <button onClick={skipBackward}>
-                    <IoPlayBackSharp />
+                <button className='controls-time' onClick={skipBackward}>
+                    <TbRewindBackward10 />
                 </button>
 
-                <button onClick={togglePlayPause}>
-                    {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
+                <button className='controls-resume' onClick={togglePlayPause}>
+                    {isPlaying ? <MdPauseCircle /> : <IoMdPlayCircle />}
                 </button>
 
-                <button onClick={skipForward}>
-                    <IoPlayForwardSharp />
+                <button className='controls-time' onClick={skipForward}>
+                    <TbRewindForward10 />
                 </button>
                 
             </div>
