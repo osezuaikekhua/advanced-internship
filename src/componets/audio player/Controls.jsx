@@ -1,26 +1,19 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+
+// icons
 import { MdPauseCircle } from "react-icons/md";
 import { IoMdPlayCircle } from "react-icons/io";
-import { GrForwardTen } from "react-icons/gr";
 import { 
         TbRewindBackward10,
         TbRewindForward10 
 } from "react-icons/tb";
-// icons
-import {
-    IoPlayBackSharp,
-} from 'react-icons/io5';
 
 function Controls({ 
     audioRef,
     progressBarRef,
     duration,
     setTimeProgress, 
-    tracks,
-    trackIndex,
-    setTrackIndex,
-    setCurrentTrack,}) {
-
+}) {
 
     const [isPlaying, setIsPlaying] = useState(false);
 

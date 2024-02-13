@@ -3,10 +3,7 @@ import React from 'react'
 import { BsMusicNoteBeamed } from 'react-icons/bs';
 
 function DisplayTrack({ 
-  currentTrackSrc, 
   bookSummary, 
-  currentTrackTitle, 
-  currentTrackAuthor, 
   audioRef, 
   setDuration, 
   progressBarRef, 

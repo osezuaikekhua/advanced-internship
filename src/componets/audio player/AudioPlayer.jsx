@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { tracks } from '../../data/tracks';
+
 
 // import components
 import DisplayTrack from './DisplayTrack'
@@ -8,8 +8,6 @@ import ProgressBar from './ProgressBar'
 
 
 function AudioPlayer({bookSummary}) {
-    const [trackIndex, setTrackIndex] = useState(0);
-    const [currentTrack, setCurrentTrack] = useState(tracks[trackIndex]);
     const [timeProgress, setTimeProgress] = useState(0);
     const [duration, setDuration] = useState(0);
     
@@ -21,14 +19,8 @@ function AudioPlayer({bookSummary}) {
     return (
     <div className='audio-player'>
         <div className='inner'>
-            <DisplayTrack 
-                currentTrackSrc={currentTrack.src} 
-                {...{bookSummary}}
-                currentTrackTitle={currentTrack.title}
-                currentTrackAuthor={currentTrack.author}
-                {...{audioRef, setDuration, progressBarRef}}
-            />
-            <Controls {...{ audioRef, progressBarRef, duration, setTimeProgress, tracks, trackIndex, setTrackIndex, setCurrentTrack, }}/>
+            <DisplayTrack {...{audioRef, setDuration, progressBarRef, bookSummary}}/>                   
+            <Controls {...{ audioRef, progressBarRef, duration, setTimeProgress, }}/>
             <ProgressBar {...{ progressBarRef, audioRef, timeProgress, duration }}/>
         </div>
     </div>
