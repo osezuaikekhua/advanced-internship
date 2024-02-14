@@ -2,12 +2,12 @@ import { Link, useParams } from 'react-router-dom'
 import React, { useEffect, useState, useContext } from 'react'
 import axios from 'axios'
 
-import { CiBookmark } from "react-icons/ci";
-import { IoBookmark } from "react-icons/io5";
-import { CiStar } from "react-icons/ci";
-import { IoMicOutline } from "react-icons/io5";
+import { CiBookmark, CiStar } from "react-icons/ci";
+import { IoBookmark, IoMicOutline } from "react-icons/io5";
 import { BsClock } from "react-icons/bs";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { HiOutlineMicrophone } from "react-icons/hi2";
+import { GiBookmarklet } from "react-icons/gi";
 
 import Skeleton from '../componets/Skeleton';
 import { Context } from '../App';
@@ -67,10 +67,16 @@ function BookInfo() {
                 {loginState ?
                     <div className='Book__Info-read'>
                         <Link to={`/player/${book.id}`}>
-                            <button>Read</button>
+                            <button>
+                                <GiBookmarklet/>
+                                <h3>Read</h3>
+                            </button>
                         </Link>
                         <Link to={`/player/${book.id}`}>
-                            <button>Listen</button>
+                            <button>
+                                <HiOutlineMicrophone/>
+                                <h3>Listen</h3>
+                            </button>
                         </Link>
                     </div>
                     :

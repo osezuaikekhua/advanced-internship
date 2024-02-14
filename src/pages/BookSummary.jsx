@@ -4,29 +4,27 @@ import axios from 'axios'
 import AudioPlayer from '../componets/audio player/AudioPlayer'
 
 
-
-
-function BookSummary() {
+function BookSummary({textSize, lineHeight}) {
     const { id } = useParams()
     const [ bookSummary, setBookSummary ] = useState({})
+
 
     async function fetchBookSummary (){
         const { data } = await axios.get(`https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`)
         setBookSummary(data)
     }
-
     
     useEffect(() => {
         fetchBookSummary()
-        console.log(bookSummary)
     }, [])
 
   return (
     <>
         <div className='Book__Summary__Page'>
             <h1 className='Book__Info-title'>{bookSummary.title}</h1>
-            <h3>{bookSummary.summary}</h3>    
+            <h3 style={{fontSize : textSize, lineHeight: lineHeight}} >{bookSummary.summary}</h3>    
         </div>
+        
         <AudioPlayer {...{bookSummary}}/>
     </>
   )

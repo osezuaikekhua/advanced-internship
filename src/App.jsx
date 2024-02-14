@@ -27,6 +27,9 @@ function App() {
   const[accountInformation, setAccountInformation] = useState(" ")
   const[showModal, setShowModal] = useState(false)
 
+  const [ textSize, setTextSize ] = useState('16px')
+  const [ lineHeight, setLineHeight ] = useState('23px')
+
   function showModule(){
     if(!showModal){
       setShowModal(true)
@@ -39,7 +42,7 @@ function App() {
               
   return (
     <>
-      <Context.Provider value={{setShowModal, showModule, setAccountInformation, accountInformation, loginState, setLoginState}}>
+      <Context.Provider value={{setShowModal, showModule, setAccountInformation, accountInformation, loginState, setLoginState, textSize, setTextSize, lineHeight, setLineHeight}}>
 
         { showModal && <Modual /> } 
 
@@ -63,7 +66,7 @@ function App() {
                 <Route path="/library" element={<Library/>} />
                 <Route path='/book/:id' element={<BookInfo/>}/>
                 <Route path='/settings' element={<Settings />} />
-                <Route path='/player/:id' element={<BookSummary/>} />
+                <Route path='/player/:id' element={<BookSummary {...{textSize, lineHeight}} />} />
               </Routes>
             </div>
           </section>
