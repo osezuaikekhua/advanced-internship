@@ -7,7 +7,7 @@ import { IoBookmark, IoMicOutline } from "react-icons/io5";
 import { BsClock } from "react-icons/bs";
 import { HiOutlineLightBulb } from "react-icons/hi";
 import { HiOutlineMicrophone } from "react-icons/hi2";
-import { GiBookmarklet } from "react-icons/gi";
+import { SlBookOpen } from "react-icons/sl";
 
 import Skeleton from '../componets/Skeleton';
 import { Context } from '../App';
@@ -68,21 +68,27 @@ function BookInfo() {
                     <div className='Book__Info-read'>
                         <Link to={`/player/${book.id}`}>
                             <button>
-                                <GiBookmarklet/>
-                                <h3>Read</h3>
+                                <SlBookOpen/>
+                                <div>Read</div>
                             </button>
                         </Link>
                         <Link to={`/player/${book.id}`}>
                             <button>
                                 <HiOutlineMicrophone/>
-                                <h3>Listen</h3>
+                                <div>Listen</div>
                             </button>
                         </Link>
                     </div>
                     :
                     <div className='Book__Info-read'>
-                        <button onClick={showModule}>Read</button>
-                        <button onClick={showModule}>Listen</button>
+                        <button onClick={showModule}>
+                            <SlBookOpen/>
+                            <div>Read</div>
+                        </button>
+                        <button onClick={showModule}>
+                            <HiOutlineMicrophone/>
+                            <div>Listen</div>
+                        </button>
                     </div>
                 }
                 <div className="Book__Info-library" onClick={SavedBooks}>
