@@ -22,6 +22,18 @@ function BookInfo() {
     const { loginState } = useContext(Context)
     const { showModule } = useContext(Context)
 
+    async function fetchBook(){
+        const { data } = await axios.get(`https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`)
+        setBook(data)
+    }
+
+    useEffect(() => {
+        fetchBook()
+        console.log(book)
+    }, [])
+
+
+    //Save book
     function SavedBooks (){
         if(!isSaved){
             setSavedStatus("Saved in My Library")
@@ -32,15 +44,6 @@ function BookInfo() {
         }
     }
 
-    async function fetchBook(){
-        const { data } = await axios.get(`https://us-central1-summaristt.cloudfunctions.net/getBook?id=${id}`)
-        setBook(data)
-    }
-
-    useEffect(() => {
-        fetchBook()
-        console.log(book)
-    }, [])
 
   return (
     <>
