@@ -16,6 +16,7 @@ import { Context } from '../App';
 function BookInfo() {
     const { id } = useParams()
     const [ book, setBook ] = useState({})
+
     const [ savedStatus, setSavedStatus ] = useState("Add title to My Library")
     const [ isSaved, setIsSaved ] = useState(false)
 
@@ -99,10 +100,12 @@ function BookInfo() {
                     <h2 >{savedStatus}</h2>
                 </div>
                 <header>What's it about?</header>
+                
                 <div className="Book__Info-tags">
                     <button>Biography</button>
                     <button>Personal Developement</button>
                 </div>
+                
                 <h3>{book.bookDescription}</h3>
 
                 <header>About the author</header>

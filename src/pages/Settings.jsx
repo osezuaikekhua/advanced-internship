@@ -1,6 +1,8 @@
 import React, { useContext } from 'react'
 import login from '../images/login.png'
 import { Context } from '../App'
+import { Link } from 'react-router-dom'
+
 
 
 function Settings() {
@@ -18,7 +20,9 @@ function Settings() {
             <div className='Account__Information'>
                 <div className='Subscription__Plan'>
                     <h3>You Subscription Plan</h3>
-                    <h4>premium-plus</h4>
+                    <h4>Basic</h4>
+                    <Link to={"/choose-plan"}><button>Upgrade to Premium</button></Link>
+                    
                 </div>
                 <div className='Account__Email'>
                     <h3>Email</h3>

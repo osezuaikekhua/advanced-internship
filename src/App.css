@@ -1155,6 +1155,15 @@ overflow: hidden;
   margin-bottom: 25px;
 }
 
+.Subscription__Plan button{
+  background-color: #2bd97c;
+  color: #052e45;  
+  padding: 10px 15px;
+  font-size: 16px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
 .Not__LoggedIn{
   display: flex;
   flex-direction: column;

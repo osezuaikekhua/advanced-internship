@@ -18,8 +18,6 @@ import FontSize from './audio player/FontSize';
 
 function Nav({logo}) {
   
-
-
   const { loginState } = useContext(Context)
   const { setLoginState } = useContext(Context)
   const { showModule } = useContext(Context)
