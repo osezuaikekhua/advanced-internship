@@ -1353,6 +1353,122 @@ overflow: hidden;
   margin: 0;
 }
 
+/* Choose Plan Section */
+
+.Plan__Container{
+  width: 100%;
+  color: #052e45;
+}
+
+.Plan__Container__Options{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+ 
+}
+
+.Plan__Container__Options i{
+  font-size: 70px;
+}
+
+.Plan__Container__Options div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 250px;
+  margin: 25px;
+}
+
+.Plan__Container__Options h4{
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.Plan__Container__Options span{
+  font-weight: 700;
+}
+
+
+.Plan__Container__Questions--item{
+  border-bottom: 1px solid #052e452a;
+  padding: 30px 0;
+}
+
+.Plan__Container__Questions--item h2{
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.Plan__Container__Questions--item h3{
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.Plan__Container__Questions--content{
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.8s cubic-bezier(0,1,0,1);
+}
+
+.Plan__Container__Questions--content.show{
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.8s cubic-bezier(1,0,1,0);
+}
+
+
+.Plan__Container__Questions--title{
+  display: flex;
+  justify-content: space-between;
+}
+
+.Plan__Container__Questions--title i{
+  font-size: 20px;
+  font-weight: 100;
+}
+
+.Plan__Container__Landing{
+  width: 100%;
+  background-color: #032b41;
+  border-radius: 0 0 250px 250px;
+  color: white;
+
+}
+
+
+.Plan__Container__Landing--container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.Plan__Container__Landing--container h1{
+  font-size: 48px;
+}
+
+.Plan__Container__Landing--title{
+  width: 85%;
+  margin-bottom: 25px;
+  margin-top: 50px;
+}
+
+.Plan__Container__Landing--container h5{
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 25px;
+  
+}
+
+.Plan__Container__Landing--container img{
+  width: 33%;
+  border-radius: 50% 50% 0 0;
+}
+
+
+
 /* =========================
 Custom Input range 
 =============================*/
